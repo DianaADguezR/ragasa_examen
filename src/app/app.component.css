@@ -1,0 +1,8 @@
+.container {
+    padding-top: 20px;
+}
+
+.btn.bg-info,
+.bg-info .modal-title {
+    color: white !important;
+}

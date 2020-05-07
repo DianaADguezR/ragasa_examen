@@ -1,1 +1,34 @@
-<p>new works!</p>
+<h5>Nueva Tarea</h5>
+<form #task="ngForm" (ngSubmit)="task.form.valid && onClickSubmit()">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="name">Nombre <span class="red">*</span></label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': task.submitted && name.invalid }" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" class="form-control" name="description" [(ngModel)]="model.description" #name="ngModel">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="description">Fecha Inicio</label>
+                <input type="date" class="form-control" name="start_date" [(ngModel)]="model.start_date" #name="ngModel">
+            </div>
+            <div class="form-group col-6">
+                <label for="description">Fecha Fin</label>
+                <input type="date" class="form-control" name="end_date" [(ngModel)]="model.end_date" #name="ngModel">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="status">Estatus</label>
+            <select [(ngModel)]="model.status" name="status" #name="ngModel" class="form-control">
+                            <option *ngFor="let sta of status" [value]="sta" >{{sta}}</option>
+                        </select>
+        </div>
+        <div class="text-danger">{{ errors }}</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="redirectTo('/task/list/')">Volver</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>
